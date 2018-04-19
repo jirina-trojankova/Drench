@@ -1,10 +1,10 @@
-//this creates grid
 var rowOpen = '<div class="row">';
 var rowClose = '</div>';
 var chessboardSize = 5;
 var idNumber = 0;
 var id = 1;
 
+//this creates grid
 for (j = 1; j <= chessboardSize; j++) {
   document.write(rowOpen);
   for (i = 1; i <= chessboardSize; i++) {
@@ -15,6 +15,11 @@ for (j = 1; j <= chessboardSize; j++) {
 };
 
 //adds class drench to the first same colors
+
+var square = document.getElementById(id);
+var right = document.getElementById(id + 1);
+var bottom = document.getElementById(id * chessboardSize + 1);
+// console.log(bottom);
 addDrench();
 
 
@@ -40,28 +45,25 @@ DOMTokenList.prototype.removeMany = function (classes) {
   }
 }
 
+
+
+
 //if colors are the same, this adds class drench
 function addDrench() {
-
-  var square = document.getElementById(id);
+  //variables 'square' and 'right' must be declared outside
   square = (square.classList);
-
-  var right = document.getElementById(id + 1);
   right = (right.classList);
-
-  var bottom = document.getElementById(id * chessboardSize +1);
-console.log(bottom);
-
   while (JSON.stringify(square) === JSON.stringify(right)) {
     square = document.getElementById(id);
     square.className += " drench";
     id = id + 1;
     square = document.getElementById(id);
     right = document.getElementById(id + 1);
-
-square = (square.classList);
+    square = (square.classList);
     right = (right.classList);
   }
+  square = document.getElementById(id);
+
   right = document.getElementById(id);
   right.className += " drench";
 }
@@ -108,6 +110,7 @@ function makeDrench(newColor) {
   // console.log(drench);
 }
 
+
 //CHANGES FIRST COLOR on click and adds class drench to the same colors
 function changeColor(newColor) {
   //in the first square changes color (class)
@@ -120,30 +123,73 @@ function changeColor(newColor) {
   var right = document.getElementById(idRight);
 
   //if there's class drench give it new color
-  while(right.classList.contains('drench') == true) {
+  while (right.classList.contains('drench') == true) {
 
     right.classList.removeMany('color1 color2 color3 color4 color5 color6');
     right.classList.add(newColor);
     //move step right and do the same
-    
+
     idRight = idRight + 1;
     right = document.getElementById(idRight);
-   }
-   right = document.getElementById(idRight);
-   right.className += " drench";  
-  //HERE i WILL ADD COMPARSION BY JSON.STRINGIFY
-  //possibly use function addDrench?
-
-
-   //BUG - if there are more than one color, the next one doesnt have class drench
-   //POSSIBLE SOLUTION - allways check whether the last right has the same color next to it
   }
-   //BUG - square changes color even if it doesn't match
+  right = document.getElementById(idRight);
+  right.className += " drench";
+  addMoreDrench();
 
-  //TO ADD drenching also from top to BOTTOM, also to the LEFT and UP
-  //add counter
-  //add reset
-  //
+  function addMoreDrench() {
+    idRight ++;
+    var rightRight = document.getElementById(idRight);
+    right = (right.classList);
+    rightRight = (rightRight.classList);
+
+    if(right.contains('drench') == true) {
+      right.remove('drench');
+    }
+    while (JSON.stringify(right) === JSON.stringify(rightRight)) {
+
+      //prida drench right i rightRight
+      right = document.getElementById(idRight);
+      right.className += " drench";
+      console.log(right);
+      rightRight = document.getElementById(idRight + 1);
+      rightRight.className += " drench";
+      console.log(rightRight);
+
+      //zvysi obema id o 1
+      idRight = idRight + 1;
+      right = document.getElementById(idRight);
+      rightRight = document.getElementById(idRight);
+      
+      //prevede zpatky na classList
+      right = (right.classList);
+      rightRight = (rightRight.classList);
+
+      if(right.contains('drench') == true) {
+        right.remove('drench');
+      }
+
+    }
+    right = document.getElementById(idRight);
+    rightRight = document.getElementById(idRight + 1);
+    // right.className += " drench";
+      console.log(right);
+      console.log(rightRight);
+  }
+ 
+  console.log('___________________________');
+
+
+
+
+  //BUG - if there are more than one color, the next one doesnt have class drench
+  //POSSIBLE SOLUTION - allways check whether the last right has the same color next to it
+}
+//BUG - square changes color even if it doesn't match
+
+//TO ADD drenching also from top to BOTTOM, also to the LEFT and UP
+//add counter
+//add reset
+//
 
 
 
