@@ -1,0 +1,44 @@
+body {
+    background-color: lightgray;
+    padding: 25px;
+}
+
+.button {
+    border: solid grey 1px;
+}
+
+.square {
+    height: 25px;
+    width: 25px;
+    border: solid grey 1px;
+}
+
+#square {
+    height: 25px;
+    width: 25px;
+    border: solid grey 1px;
+}
+
+.color1 { 
+    background-color: #fcfaef; 
+  } 
+   
+  .color2 { 
+    background-color: #fcfbbe; 
+  } 
+   
+  .color3 { 
+    background-color: #f7c3cd; 
+  } 
+   
+  .color4 { 
+    background-color: #f4d442; 
+  } 
+   
+  .color5 { 
+    background-color: #e6b0f2; 
+  } 
+   
+  .color6 { 
+    background-color: #bbe56e; 
+  }
