@@ -20,7 +20,7 @@ addDrench();
 
 //randomly chooses number
 function getNumber() {
-  var number = Math.floor((Math.random() * 2) + 1);
+  var number = Math.floor((Math.random() * 6) + 1);
   return number;
 }
 
@@ -90,14 +90,18 @@ function changeColor(newColor) {
     idRight++;
     right = document.getElementById(idRight);
   }
-  right = document.getElementById(idRight);
-  right.className += " drench";
   //HERE i WILL ADD COMPARSION BY JSON.STRINGIFY
   //possibly use function addDrench?
   //BUG - if there are more than one color, the next one doesnt have class drench
   //POSSIBLE SOLUTION - allways check whether the last right has the same color next to it
-  id++;
   idRight++;
+  id = idRight - 1;
+  square = document.getElementById(id);
+  right = document.getElementById(idRight);
+  // console.log(square);
+  // console.log(right);
+  square = (square.classList);
+  right = (right.classList);
 
   //TADY POTREBUJU ABY TO PRIDALO CLASS DRENCH POKUD CLASS COLOR BUDE SHODNA:
   //NAPRED ODSTRANI CLASS DRENCH U SQUARE, POKUD TAM JE, 
@@ -105,21 +109,21 @@ function changeColor(newColor) {
   while (JSON.stringify(square) === JSON.stringify(right)) {
     //POKUD JSOU STEJNE,PRIDA CLASS DRENCH U SQUARE
     square = document.getElementById(id);
-    square.classList.removeMany('color1 color2 color3 color4 color5 color6');
+   square.className += " drench";
     
-    square.className += " drench ";
-    square.className += newColor;
     //ZVYSI SQUARE I RIGHT O 1
-    id = id + 1;
+    id++;
+    idRight++;
 
     square = document.getElementById(id);
-    right = document.getElementById(id + 1);
+    right = document.getElementById(idRight);
 
     square = (square.classList);
     right = (right.classList);
   }
-  //TADY JESTE VRATI CLASS DRENCH SQUARE, KTEREMU SE PREDITM ODEBRALA
-
+  //TADY PRIDA CLASS DRENCH TO SQUARE
+  square = document.getElementById(id);
+  square.className += " drench";
 }
 
 
