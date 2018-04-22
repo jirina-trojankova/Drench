@@ -1,8 +1,7 @@
 var rowOpen = '<div class="row">';
 var rowClose = '</div>';
-var chessboardSize = 5;
+var chessboardSize = 10;
 var id = 0;
-var idRight = id + 1;
 
 //this creates grid
 for (j = 1; j <= chessboardSize; j++) {
@@ -14,12 +13,14 @@ for (j = 1; j <= chessboardSize; j++) {
   document.write(rowClose);
 };
 
-//adds class drench to the first same colors
-
+id = 1;
+var idRight = id + 1;
+var idBottom = id * chessboardSize + 1;
 var square = document.getElementById(id);
-var right = document.getElementById(id + 1);
-var bottom = document.getElementById(id * chessboardSize + 1);
-// console.log(bottom);
+var right = document.getElementById(idRight);
+var bottom = document.getElementById(idBottom);
+
+//adds class drench to the first same colors
 addDrench();
 
 
@@ -58,7 +59,8 @@ function addDrench() {
   var right = document.getElementById(idRight);
   right = (right.classList);
 
-  var bottom = document.getElementById(id * chessboardSize + 1);
+  var bottom = document.getElementById(idBottom);
+    bottom = (bottom.classList);
 
   while (JSON.stringify(square) === JSON.stringify(right)) {
     square = document.getElementById(id);
@@ -73,7 +75,25 @@ function addDrench() {
   }
   square = document.getElementById(id);
   square.className += " drench";
-}
+
+  while (JSON.stringify(square) === JSON.stringify(bottom)) {
+    // square = document.getElementById(id);
+    // if (square.classList.contains('drench') != true) {
+    //   square.className += " drench";
+      id = idBottom;
+      idBottom = idBottom + chessboardSize;
+      square = document.getElementById(id);
+      bottom = document.getElementById(idBottom);
+      console.log(id);
+      console.log(bottom);
+
+      square = (square.classList);
+      bottom = (bottom.classList);
+    }
+    square = document.getElementById(id);
+    square.className += " drench";
+  }
+
 
 
 //CHANGES FIRST COLOR on click and adds class drench to the same colors
@@ -97,7 +117,7 @@ function changeColor(newColor) {
     idRight++;
     right = document.getElementById(idRight);
   }
-  
+
   //adds class drench to the next group of color
   idRight++;
   id = idRight - 1;
