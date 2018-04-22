@@ -20,7 +20,7 @@ addDrench();
 
 //randomly chooses number
 function getNumber() {
-  var number = Math.floor((Math.random() * 6) + 1);
+  var number = Math.floor((Math.random() * 2) + 1);
   return number;
 }
 
@@ -50,7 +50,6 @@ function addDrench() {
   right = (right.classList);
 
   var bottom = document.getElementById(id * chessboardSize + 1);
-  console.log(bottom);
 
   while (JSON.stringify(square) === JSON.stringify(right)) {
     square = document.getElementById(id);
@@ -88,7 +87,7 @@ function changeColor(newColor) {
     right.classList.add(newColor);
     //move step right and do the same
 
-    idRight = idRight + 1;
+    idRight++;
     right = document.getElementById(idRight);
   }
   right = document.getElementById(idRight);
