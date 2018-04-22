@@ -2,14 +2,13 @@
 var rowOpen = '<div class="row">';
 var rowClose = '</div>';
 var chessboardSize = 5;
-var idNumber = 0;
-var id = 1;
+var id = 0;
 
 for (j = 1; j <= chessboardSize; j++) {
   document.write(rowOpen);
   for (i = 1; i <= chessboardSize; i++) {
-    idNumber++;
-    document.write('<div class=\"square color' + getNumber() + '\" id=\"' + idNumber + '\"></div>');
+    id++;
+    document.write('<div class=\"square color' + getNumber() + '\" id=\"' + id + '\"></div>');
   };
   document.write(rowClose);
 };
@@ -42,6 +41,7 @@ DOMTokenList.prototype.removeMany = function (classes) {
 
 //if colors are the same, this adds class drench
 function addDrench() {
+  id = 1;
 
   var square = document.getElementById(id);
   square = (square.classList);
@@ -65,14 +65,10 @@ function addDrench() {
   right.className += " drench";
 }
 
-/*var arr = ["#fcfaef", "#fffa05", "#f7c3cd", "#f4d442", "#e6b0f2", "#e5c76e"]
-var arr = { "white" : "#fcfaef", "yellow" : "#fffa05", "pink": "#f7c3cd", "orange" : "#f4d442", "purple" : "#e6b0f2", "brown": "#e5c76e", }; 
-*/
-
 //CHANGES FIRST COLOR on click and adds class drench to the same colors
 function changeColor(newColor) {
   //in the first square changes color (class)
-  var id = 1;
+  id = 1;
   var idRight = 2;
   var square = document.getElementById(id);
   square.classList.removeMany('color1 color2 color3 color4 color5 color6');
@@ -90,28 +86,21 @@ function changeColor(newColor) {
     idRight++;
     right = document.getElementById(idRight);
   }
-  //HERE i WILL ADD COMPARSION BY JSON.STRINGIFY
-  //possibly use function addDrench?
-  //BUG - if there are more than one color, the next one doesnt have class drench
-  //POSSIBLE SOLUTION - allways check whether the last right has the same color next to it
+
   idRight++;
   id = idRight - 1;
+
   square = document.getElementById(id);
   right = document.getElementById(idRight);
-  // console.log(square);
-  // console.log(right);
+
   square = (square.classList);
   right = (right.classList);
 
-  //TADY POTREBUJU ABY TO PRIDALO CLASS DRENCH POKUD CLASS COLOR BUDE SHODNA:
-  //NAPRED ODSTRANI CLASS DRENCH U SQUARE, POKUD TAM JE, 
-  //PAK POROVNA
+  //adds class drench to the next group of color
   while (JSON.stringify(square) === JSON.stringify(right)) {
-    //POKUD JSOU STEJNE,PRIDA CLASS DRENCH U SQUARE
     square = document.getElementById(id);
-   square.className += " drench";
-    
-    //ZVYSI SQUARE I RIGHT O 1
+    square.className += " drench";
+
     id++;
     idRight++;
 
@@ -121,50 +110,49 @@ function changeColor(newColor) {
     square = (square.classList);
     right = (right.classList);
   }
-  //TADY PRIDA CLASS DRENCH TO SQUARE
   square = document.getElementById(id);
   square.className += " drench";
 }
 
 
 
-//changes the colors class on click according to the newColor
-function makeDrench(newColor) {
-  //catches square and right square
-  var id = 1;
-  var square = document.getElementById(id);
-  square.classList.remove('drench');
-  square = (square.classList);
-  var right = document.getElementById(id + 1);
-  right = (right.classList);
+// //changes the colors class on click according to the newColor
+// function makeDrench(newColor) {
+//   //catches square and right square
+//   var id = 1;
+//   var square = document.getElementById(id);
+//   square.classList.remove('drench');
+//   square = (square.classList);
+//   var right = document.getElementById(id + 1);
+//   right = (right.classList);
 
-  //while square and right colors are equal, removes all classes, adds current class through parameter
-  //moves to the right, does the same
-  while (JSON.stringify(square) === JSON.stringify(right)) {
-    square = document.getElementById(id);
-    square.classList.removeMany('color1 color2 color3 color4 color5 color6');
-    square.className += " drench ";
-    square.className += newColor;
+//   //while square and right colors are equal, removes all classes, adds current class through parameter
+//   //moves to the right, does the same
+//   while (JSON.stringify(square) === JSON.stringify(right)) {
+//     square = document.getElementById(id);
+//     square.classList.removeMany('color1 color2 color3 color4 color5 color6');
+//     square.className += " drench ";
+//     square.className += newColor;
 
-    id = id + 1;
+//     id = id + 1;
 
-    square = document.getElementById(id);
-    right = document.getElementById(id + 1);
+//     square = document.getElementById(id);
+//     right = document.getElementById(id + 1);
 
-    square = (square.classList);
-    right = (right.classList);
-  }
+//     square = (square.classList);
+//     right = (right.classList);
+//   }
 
-  //marks the right square
-  right = document.getElementById(id);
-  right.classList.removeMany('color1 color2 color3 color4 color5 color6');
-  right.className += " drench ";
-  right.className += newColor;
+//   //marks the right square
+//   right = document.getElementById(id);
+//   right.classList.removeMany('color1 color2 color3 color4 color5 color6');
+//   right.className += " drench ";
+//   right.className += newColor;
 
-  //catches and shows all in class drench
-  //var drench = document.getElementsByClassName('drench')[0];
-  // console.log(drench);
-}
+//   //catches and shows all in class drench
+//   //var drench = document.getElementsByClassName('drench')[0];
+//   // console.log(drench);
+// }
 
 
 
@@ -173,8 +161,7 @@ function makeDrench(newColor) {
 
 //TO ADD drenching also from top to BOTTOM, also to the LEFT and UP
 //add counter
-//add reset
-//
+
 
 
 
