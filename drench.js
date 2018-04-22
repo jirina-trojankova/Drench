@@ -109,55 +109,48 @@ function drenchDown() {
 
 //CHANGES FIRST COLOR on click and adds class drench to the same colors
 function changeColor(newColor) {
-  //in the first square changes color (class)
-  id = 1;
-  idRight = id + 1;
-  var square = document.getElementById(id);
+
+  
   square.classList.removeMany('color1 color2 color3 color4 color5 color6');
   square.classList.add(newColor);
-  //check if ther's class drench at right
-  var right = document.getElementById(idRight);
-
-
 
   //if there's class drench give it new color
-  while (right.classList.contains('drench') == true) {
-
-    right.classList.removeMany('color1 color2 color3 color4 color5 color6');
-    right.classList.add(newColor);
-    //move step right and do the same
-
-    idRight++;
-    right = document.getElementById(idRight);
+  for (id = 1; id <= chessboardSize * chessboardSize; id++) {
+    square = document.getElementById(id);
+    //checks the class
+    if (square.classList.contains('drench') == true) {
+      square.classList.removeMany('color1 color2 color3 color4 color5 color6');
+      square.classList.add(newColor);
+    }
   }
 
-  //adds class drench to the next group of color
-  idRight++;
-  id = idRight - 1;
+    //adds class drench to the next group of color
+  //   idRight++;
+  //   id = idRight - 1;
 
-  square = document.getElementById(id);
-  right = document.getElementById(idRight);
+  //   square = document.getElementById(id);
+  //   right = document.getElementById(idRight);
 
-  square = (square.classList);
-  right = (right.classList);
+  //   square = (square.classList);
+  //   right = (right.classList);
 
-  while (JSON.stringify(square) === JSON.stringify(right)) {
-    square = document.getElementById(id);
-    square.className += " drench";
+  //   while (JSON.stringify(square) === JSON.stringify(right)) {
+  //     square = document.getElementById(id);
+  //     square.className += " drench";
 
-    id++;
-    idRight++;
+  //     id++;
+  //     idRight++;
 
-    square = document.getElementById(id);
-    right = document.getElementById(idRight);
+  //     square = document.getElementById(id);
+  //     right = document.getElementById(idRight);
 
-    square = (square.classList);
-    right = (right.classList);
-  }
-  square = document.getElementById(id);
-  square.className += " drench";
+  //     square = (square.classList);
+  //     right = (right.classList);
+  //   }
+  //   square = document.getElementById(id);
+  //   square.className += " drench";
+  // }
 }
-
 //BUG - square changes color even if it doesn't match
 
 //TO ADD drenching also from top to BOTTOM, also to the LEFT and UP
