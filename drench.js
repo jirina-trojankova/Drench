@@ -3,6 +3,7 @@ var rowOpen = '<div class="row">';
 var rowClose = '</div>';
 var chessboardSize = 5;
 var id = 0;
+var idRight = id + 1;
 
 for (j = 1; j <= chessboardSize; j++) {
   document.write(rowOpen);
@@ -42,11 +43,11 @@ DOMTokenList.prototype.removeMany = function (classes) {
 //if colors are the same, this adds class drench
 function addDrench() {
   id = 1;
-
+  idRight = 2;
   var square = document.getElementById(id);
   square = (square.classList);
 
-  var right = document.getElementById(id + 1);
+  var right = document.getElementById(idRight);
   right = (right.classList);
 
   var bottom = document.getElementById(id * chessboardSize + 1);
@@ -54,22 +55,23 @@ function addDrench() {
   while (JSON.stringify(square) === JSON.stringify(right)) {
     square = document.getElementById(id);
     square.className += " drench";
-    id = id + 1;
+    id++;
+    idRight++;
     square = document.getElementById(id);
-    right = document.getElementById(id + 1);
+    right = document.getElementById(idRight);
 
     square = (square.classList);
     right = (right.classList);
   }
-  right = document.getElementById(id);
-  right.className += " drench";
+  square = document.getElementById(id);
+  square.className += " drench";
 }
 
 //CHANGES FIRST COLOR on click and adds class drench to the same colors
 function changeColor(newColor) {
   //in the first square changes color (class)
   id = 1;
-  var idRight = 2;
+  idRight = 2;
   var square = document.getElementById(id);
   square.classList.removeMany('color1 color2 color3 color4 color5 color6');
   square.classList.add(newColor);
@@ -86,7 +88,8 @@ function changeColor(newColor) {
     idRight++;
     right = document.getElementById(idRight);
   }
-
+  
+  //adds class drench to the next group of color
   idRight++;
   id = idRight - 1;
 
@@ -96,7 +99,6 @@ function changeColor(newColor) {
   square = (square.classList);
   right = (right.classList);
 
-  //adds class drench to the next group of color
   while (JSON.stringify(square) === JSON.stringify(right)) {
     square = document.getElementById(id);
     square.className += " drench";
@@ -113,49 +115,6 @@ function changeColor(newColor) {
   square = document.getElementById(id);
   square.className += " drench";
 }
-
-
-
-// //changes the colors class on click according to the newColor
-// function makeDrench(newColor) {
-//   //catches square and right square
-//   var id = 1;
-//   var square = document.getElementById(id);
-//   square.classList.remove('drench');
-//   square = (square.classList);
-//   var right = document.getElementById(id + 1);
-//   right = (right.classList);
-
-//   //while square and right colors are equal, removes all classes, adds current class through parameter
-//   //moves to the right, does the same
-//   while (JSON.stringify(square) === JSON.stringify(right)) {
-//     square = document.getElementById(id);
-//     square.classList.removeMany('color1 color2 color3 color4 color5 color6');
-//     square.className += " drench ";
-//     square.className += newColor;
-
-//     id = id + 1;
-
-//     square = document.getElementById(id);
-//     right = document.getElementById(id + 1);
-
-//     square = (square.classList);
-//     right = (right.classList);
-//   }
-
-//   //marks the right square
-//   right = document.getElementById(id);
-//   right.classList.removeMany('color1 color2 color3 color4 color5 color6');
-//   right.className += " drench ";
-//   right.className += newColor;
-
-//   //catches and shows all in class drench
-//   //var drench = document.getElementsByClassName('drench')[0];
-//   // console.log(drench);
-// }
-
-
-
 
 //BUG - square changes color even if it doesn't match
 
