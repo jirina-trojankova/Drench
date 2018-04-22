@@ -24,6 +24,7 @@ var bottom = document.getElementById(idBottom);
 drenchRight();
 drenchDown();
 
+
 //randomly chooses number
 function getNumber() {
   var number = Math.floor((Math.random() * 2) + 1);
@@ -51,7 +52,7 @@ DOMTokenList.prototype.removeMany = function (classes) {
 //PRIDA CLASS VSEM CTVERCUM STEJNE BARVY SMEREM VPRAVO
 function drenchRight() {
   id = 1;
-  idRight = 2;
+  idRight = id + 1;
   var square = document.getElementById(id);
   square = (square.classList);
 
@@ -76,7 +77,7 @@ function drenchRight() {
 //PRIDA CLAS VSEM CTVERCUM STEJNE BARVY SMEREM DOLU
 function drenchDown() {
   id = 1;
-  idBottom = 11;
+  idBottom = id * chessboardSize + 1;
   var square = document.getElementById(id);
   square = (square.classList);
 
@@ -110,12 +111,14 @@ function drenchDown() {
 function changeColor(newColor) {
   //in the first square changes color (class)
   id = 1;
-  idRight = 2;
+  idRight = id + 1;
   var square = document.getElementById(id);
   square.classList.removeMany('color1 color2 color3 color4 color5 color6');
   square.classList.add(newColor);
   //check if ther's class drench at right
   var right = document.getElementById(idRight);
+
+
 
   //if there's class drench give it new color
   while (right.classList.contains('drench') == true) {
