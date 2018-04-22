@@ -3,6 +3,16 @@ body {
     padding: 25px;
 }
 
+/* NEED TO WORK ON THIS: */
+#main {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row {
+  margin: 0;
+}
+
 .button {
     border: solid grey 1px;
 }
@@ -24,7 +34,7 @@ body {
   } 
    
   .color2 { 
-    background-color: #fcfbbe; 
+    background-color: #e4f739; 
   } 
    
   .color3 { 
