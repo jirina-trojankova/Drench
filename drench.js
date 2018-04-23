@@ -21,15 +21,10 @@ var right = document.getElementById(idRight);
 var bottom = document.getElementById(idBottom);
 
 
-drenchRight();
-drenchDown();
+// drenchRight();
+// drenchDown();
 checkDrench();
-// id++;
-// square = document.getElementById(id);
-//   while(square.classList.contains('drench') ==true) {
-//     id++;
-//     square = document.getElementById(id);
-//   }
+
 
 //randomly chooses number
 function getNumber() {
@@ -55,7 +50,7 @@ DOMTokenList.prototype.removeMany = function (classes) {
 
 
 
-//PRIDA CLASS VSEM CTVERCUM STEJNE BARVY SMEREM VPRAVO
+//drenches right
 function drenchRight() {
   square = document.getElementById(id);
   right = document.getElementById(idRight);
@@ -81,7 +76,7 @@ function drenchRight() {
   square.className += " drench";
 }
 
-//PRIDA CLAS VSEM CTVERCUM STEJNE BARVY SMEREM DOLU
+//drenches down
 function drenchDown() {
   square = document.getElementById(id);
   bottom = document.getElementById(idBottom);
@@ -110,7 +105,7 @@ function drenchDown() {
 
 
 
-//ZKONTROLUJE KAZDOU KOSTKU, JESTLI VPRAVO A DOLU MA STEJNOU BARVU A PRIDA CLASS DRENCH
+//checks every square and drenches right and down
 function checkDrench() {
   for (id = 1; id <= chessboardSize * chessboardSize; id++) {
     idRight = id + 1;
@@ -128,35 +123,36 @@ function checkDrench() {
       //DRENCH RIGHT
       if (square.contains('drench') == true) {
         square.remove('drench');
+      }
+
       if (JSON.stringify(square) === JSON.stringify(right)) {
         square = document.getElementById(id);
         
         right = document.getElementById(idRight);
         right.className += " drench";
-        console.log('++++++++++++++++++++++++++');
+
         square = (square.classList);
         right = (right.classList);
       }
-      
+
       //DRENCH DOWN
       if (JSON.stringify(square) === JSON.stringify(bottom)) {
+
         square = document.getElementById(id);
         
-        console.log('*************************');
         bottom = document.getElementById(idBottom);
         bottom.className += " drench";
-        console.log(bottom);
 
         square = (square.classList);
         bottom = (bottom.classList);
       }
-      
-      
+
       square = document.getElementById(id);
-      square.className += " drench";
-    }
+      square.className += " drench";    
   }
 }
+
+
 //CHANGES FIRST COLOR on click 
 function changeColor(newColor) {
   console.log('________________');
