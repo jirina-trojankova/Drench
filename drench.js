@@ -23,7 +23,13 @@ var bottom = document.getElementById(idBottom);
 
 drenchRight();
 drenchDown();
-
+checkDrench();
+// id++;
+// square = document.getElementById(id);
+//   while(square.classList.contains('drench') ==true) {
+//     id++;
+//     square = document.getElementById(id);
+//   }
 
 //randomly chooses number
 function getNumber() {
@@ -51,13 +57,14 @@ DOMTokenList.prototype.removeMany = function (classes) {
 
 //PRIDA CLASS VSEM CTVERCUM STEJNE BARVY SMEREM VPRAVO
 function drenchRight() {
-  id = 1;
-  idRight = id + 1;
-  var square = document.getElementById(id);
+  square = document.getElementById(id);
+  right = document.getElementById(idRight);
   square = (square.classList);
-
-  var right = document.getElementById(idRight);
   right = (right.classList);
+
+  if (square.contains('drench') == true) {
+    square.remove('drench');
+  }
 
   while (JSON.stringify(square) === JSON.stringify(right)) {
     square = document.getElementById(id);
@@ -76,12 +83,9 @@ function drenchRight() {
 
 //PRIDA CLAS VSEM CTVERCUM STEJNE BARVY SMEREM DOLU
 function drenchDown() {
-  id = 1;
-  idBottom = id * chessboardSize + 1;
-  var square = document.getElementById(id);
+  square = document.getElementById(id);
+  bottom = document.getElementById(idBottom);
   square = (square.classList);
-
-  var bottom = document.getElementById(idBottom);
   bottom = (bottom.classList);
 
   if (square.contains('drench') == true) {
@@ -106,11 +110,63 @@ function drenchDown() {
 
 
 
+//ZKONTROLUJE KAZDOU KOSTKU, JESTLI VPRAVO A DOLU MA STEJNOU BARVU A PRIDA CLASS DRENCH
+function checkDrench() {
+  for (id = 1; id <= chessboardSize * chessboardSize; id++) {
+    idRight = id + 1;
+    idBottom = id + chessboardSize;
 
-//CHANGES FIRST COLOR on click and adds class drench to the same colors
+    square = document.getElementById(id);
+    right = document.getElementById(idRight);
+    bottom = document.getElementById(idBottom);
+
+    square = (square.classList);
+    right = (right.classList);
+    bottom = (bottom.classList);
+
+    
+      //DRENCH RIGHT
+      if (square.contains('drench') == true) {
+        square.remove('drench');
+      if (JSON.stringify(square) === JSON.stringify(right)) {
+        square = document.getElementById(id);
+        
+        right = document.getElementById(idRight);
+        right.className += " drench";
+        console.log('++++++++++++++++++++++++++');
+        square = (square.classList);
+        right = (right.classList);
+      }
+      
+      //DRENCH DOWN
+      if (JSON.stringify(square) === JSON.stringify(bottom)) {
+        square = document.getElementById(id);
+        
+        console.log('*************************');
+        bottom = document.getElementById(idBottom);
+        bottom.className += " drench";
+        console.log(bottom);
+
+        square = (square.classList);
+        bottom = (bottom.classList);
+      }
+      
+      
+      square = document.getElementById(id);
+      square.className += " drench";
+    }
+  }
+}
+//CHANGES FIRST COLOR on click 
 function changeColor(newColor) {
+  console.log('________________');
+  id = 1;
+  console.log(id);
 
-  
+  square = document.getElementById(id);
+  console.log(square);
+  square = (square.classList);
+  console.log(square);
   square.classList.removeMany('color1 color2 color3 color4 color5 color6');
   square.classList.add(newColor);
 
@@ -124,7 +180,17 @@ function changeColor(newColor) {
     }
   }
 
-    //adds class drench to the next group of color
+  //adds class drench to the next group of color DALSI NA RADE
+  // id = 1;
+  // idRight = id + 1;
+  // square = document.getElementById(id);
+  // right = document.getElementById(idRight);
+  // square = (square.classList);
+  // right = (right.classList);
+  // while (JSON.stringify(square) !== JSON.stringify(right)) {
+
+  //   GO RIGHT AND ADD CLASS DRENCH, CHECK WHETHER THEY ARE SAME, AND AGAIN
+
   //   idRight++;
   //   id = idRight - 1;
 
