@@ -20,11 +20,7 @@ var square = document.getElementById(id);
 var right = document.getElementById(idRight);
 var bottom = document.getElementById(idBottom);
 
-
-// drenchRight();
-// drenchDown();
 checkDrench();
-
 
 //randomly chooses number
 function getNumber() {
@@ -48,65 +44,11 @@ DOMTokenList.prototype.removeMany = function (classes) {
   }
 }
 
-
-
-//drenches right
-function drenchRight() {
-  square = document.getElementById(id);
-  right = document.getElementById(idRight);
-  square = (square.classList);
-  right = (right.classList);
-
-  if (square.contains('drench') == true) {
-    square.remove('drench');
-  }
-
-  while (JSON.stringify(square) === JSON.stringify(right)) {
-    square = document.getElementById(id);
-    square.className += " drench";
-    id++;
-    idRight++;
-    square = document.getElementById(id);
-    right = document.getElementById(idRight);
-
-    square = (square.classList);
-    right = (right.classList);
-  }
-  square = document.getElementById(id);
-  square.className += " drench";
-}
-
-//drenches down
-function drenchDown() {
-  square = document.getElementById(id);
-  bottom = document.getElementById(idBottom);
-  square = (square.classList);
-  bottom = (bottom.classList);
-
-  if (square.contains('drench') == true) {
-    square.remove('drench');
-  }
-
-  while (JSON.stringify(square) === JSON.stringify(bottom)) {
-    square = document.getElementById(id);
-    square.className += " drench";
-
-    id = idBottom;
-    idBottom = idBottom + chessboardSize;
-    square = document.getElementById(id);
-    bottom = document.getElementById(idBottom);
-
-    square = (square.classList);
-    bottom = (bottom.classList);
-  }
-  square = document.getElementById(id);
-  square.className += " drench";
-}
-
-
-
-//checks every square and drenches right and down
+ //checks every square and drenches right and down
 function checkDrench() {
+  var square_1 = document.getElementById(1);
+  square_1.classList.add("drench");
+
   for (id = 1; id <= chessboardSize * chessboardSize; id++) {
     idRight = id + 1;
     idBottom = id + chessboardSize;
@@ -119,12 +61,10 @@ function checkDrench() {
     right = (right.classList);
     bottom = (bottom.classList);
 
-    
       //DRENCH RIGHT
       if (square.contains('drench') == true) {
         square.remove('drench');
-      }
-
+      
       if (JSON.stringify(square) === JSON.stringify(right)) {
         square = document.getElementById(id);
         
@@ -149,6 +89,7 @@ function checkDrench() {
 
       square = document.getElementById(id);
       square.className += " drench";    
+    }
   }
 }
 
@@ -223,3 +164,56 @@ function changeColor(newColor) {
 
 /*if(square.classList.contains('drench') !=true) {
   square.className += " drench";*/
+
+  //drenches down
+// function drenchDown() {
+//   square = document.getElementById(id);
+//   bottom = document.getElementById(idBottom);
+//   square = (square.classList);
+//   bottom = (bottom.classList);
+
+//   if (square.contains('drench') == true) {
+//     square.remove('drench');
+//   }
+
+//   while (JSON.stringify(square) === JSON.stringify(bottom)) {
+//     square = document.getElementById(id);
+//     square.className += " drench";
+
+//     id = idBottom;
+//     idBottom = idBottom + chessboardSize;
+//     square = document.getElementById(id);
+//     bottom = document.getElementById(idBottom);
+
+//     square = (square.classList);
+//     bottom = (bottom.classList);
+//   }
+//   square = document.getElementById(id);
+//   square.className += " drench";
+// }
+
+//drenches right
+// function drenchRight() {
+//   square = document.getElementById(id);
+//   right = document.getElementById(idRight);
+//   square = (square.classList);
+//   right = (right.classList);
+
+//   if (square.contains('drench') == true) {
+//     square.remove('drench');
+//   }
+
+//   while (JSON.stringify(square) === JSON.stringify(right)) {
+//     square = document.getElementById(id);
+//     square.className += " drench";
+//     id++;
+//     idRight++;
+//     square = document.getElementById(id);
+//     right = document.getElementById(idRight);
+
+//     square = (square.classList);
+//     right = (right.classList);
+//   }
+//   square = document.getElementById(id);
+//   square.className += " drench";
+// }
