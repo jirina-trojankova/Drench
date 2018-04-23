@@ -24,7 +24,7 @@ checkDrench();
 
 //randomly chooses number
 function getNumber() {
-  var number = Math.floor((Math.random() * 2) + 1);
+  var number = Math.floor((Math.random() * 6) + 1);
   return number;
 }
 
@@ -44,7 +44,7 @@ DOMTokenList.prototype.removeMany = function (classes) {
   }
 }
 
- //checks every square and drenches right and down
+//checks every square and drenches right and down
 function checkDrench() {
   var square_1 = document.getElementById(1);
   square_1.classList.add("drench");
@@ -58,37 +58,42 @@ function checkDrench() {
     bottom = document.getElementById(idBottom);
 
     square = (square.classList);
-    right = (right.classList);
-    bottom = (bottom.classList);
 
-      //DRENCH RIGHT
+
+    //DRENCH RIGHT
+    if (idRight < 101) {
+      right = (right.classList);
       if (square.contains('drench') == true) {
         square.remove('drench');
-      
-      if (JSON.stringify(square) === JSON.stringify(right)) {
-        square = document.getElementById(id);
-        
-        right = document.getElementById(idRight);
-        right.className += " drench";
 
-        square = (square.classList);
-        right = (right.classList);
+        if (JSON.stringify(square) === JSON.stringify(right)) {
+          square = document.getElementById(id);
+
+          right = document.getElementById(idRight);
+          right.className += " drench";
+
+          square = (square.classList);
+          right = (right.classList);
+        }
       }
-
       //DRENCH DOWN
-      if (JSON.stringify(square) === JSON.stringify(bottom)) {
-
-        square = document.getElementById(id);
-        
-        bottom = document.getElementById(idBottom);
-        bottom.className += " drench";
-
-        square = (square.classList);
+      if (idBottom < 101) {
         bottom = (bottom.classList);
-      }
+        if (JSON.stringify(square) === JSON.stringify(bottom)) {
 
+          square = document.getElementById(id);
+
+          bottom = document.getElementById(idBottom);
+          bottom.className += " drench";
+
+          square = (square.classList);
+          bottom = (bottom.classList);
+
+        }
+      }
       square = document.getElementById(id);
-      square.className += " drench";    
+      square.className += " drench";
+
     }
   }
 }
@@ -96,26 +101,69 @@ function checkDrench() {
 
 //CHANGES FIRST COLOR on click 
 function changeColor(newColor) {
-  console.log('________________');
   id = 1;
-  console.log(id);
-
-  square = document.getElementById(id);
-  console.log(square);
-  square = (square.classList);
-  console.log(square);
-  square.classList.removeMany('color1 color2 color3 color4 color5 color6');
-  square.classList.add(newColor);
-
   //if there's class drench give it new color
   for (id = 1; id <= chessboardSize * chessboardSize; id++) {
     square = document.getElementById(id);
+
     //checks the class
-    if (square.classList.contains('drench') == true) {
+    if (square.classList.contains('drench') === true) {
+      square = document.getElementById(id);
       square.classList.removeMany('color1 color2 color3 color4 color5 color6');
       square.classList.add(newColor);
     }
   }
+
+
+  //CHANGES FIRST COLOR on click and adds class drench to the same colors
+  // function changeColor(newColor) {
+  //   //in the first square changes color (class)
+  //   id = 1;
+  //   idRight = 2;
+  //   var square = document.getElementById(id);
+  //   square.classList.removeMany('color1 color2 color3 color4 color5 color6');
+  //   square.classList.add(newColor);
+  //   //check if ther's class drench at right
+  //   var right = document.getElementById(idRight);
+
+  //   //if there's class drench give it new color
+  //   while (right.classList.contains('drench') == true) {
+
+  //     right.classList.removeMany('color1 color2 color3 color4 color5 color6');
+  //     right.classList.add(newColor);
+  //     //move step right and do the same
+
+  //     idRight++;
+  //     right = document.getElementById(idRight);
+  //   }
+
+  //   //adds class drench to the next group of color
+  //   idRight++;
+  //   id = idRight - 1;
+
+  //   square = document.getElementById(id);
+  //   right = document.getElementById(idRight);
+
+  //   square = (square.classList);
+  //   right = (right.classList);
+
+  //   while (JSON.stringify(square) === JSON.stringify(right)) {
+  //     square = document.getElementById(id);
+  //     square.className += " drench";
+
+  //     id++;
+  //     idRight++;
+
+  //     square = document.getElementById(id);
+  //     right = document.getElementById(idRight);
+
+  //     square = (square.classList);
+  //     right = (right.classList);
+  //   }
+  //   square = document.getElementById(id);
+  //   square.className += " drench";
+  // }
+
 
   //adds class drench to the next group of color DALSI NA RADE
   // id = 1;
@@ -165,7 +213,7 @@ function changeColor(newColor) {
 /*if(square.classList.contains('drench') !=true) {
   square.className += " drench";*/
 
-  //drenches down
+//drenches down
 // function drenchDown() {
 //   square = document.getElementById(id);
 //   bottom = document.getElementById(idBottom);
