@@ -24,7 +24,7 @@ checkDrench();
 
 //randomly chooses number
 function getNumber() {
-  var number = Math.floor((Math.random() * 2) + 1);
+  var number = Math.floor((Math.random() * 6) + 1);
   return number;
 }
 
@@ -86,11 +86,6 @@ function checkDrench() {
 }
 
 
-
-
-
-
-
 //CHANGES FIRST COLOR on click 
 function changeColor(newColor) {
   id = 1;
@@ -105,7 +100,8 @@ function changeColor(newColor) {
       square.classList.add(newColor);
     }
   }
-
+  checkDrench();
+}
 
   //CHANGES FIRST COLOR on click and adds class drench to the same colors
   // function changeColor(newColor) {
@@ -239,7 +235,7 @@ function changeColor(newColor) {
   //   square = document.getElementById(id);
   //   square.className += " drench";
   // }
-}
+
 //BUG - square changes color even if it doesn't match
 
 //TO ADD drenching also from top to BOTTOM, also to the LEFT and UP
