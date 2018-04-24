@@ -24,7 +24,7 @@ checkDrench();
 
 //randomly chooses number
 function getNumber() {
-  var number = Math.floor((Math.random() * 6) + 1);
+  var number = Math.floor((Math.random() * 2) + 1);
   return number;
 }
 
@@ -59,20 +59,14 @@ function checkDrench() {
 
     square = (square.classList);
 
-
     //DRENCH RIGHT
-    if (idRight < 101) {
-      right = (right.classList);
-      if (square.contains('drench') == true) {
-        square.remove('drench');
-
+    if (square.contains('drench') == true) {
+      square.remove('drench');
+      if (idRight < 101) {
+        right = (right.classList);
         if (JSON.stringify(square) === JSON.stringify(right)) {
-          square = document.getElementById(id);
-
           right = document.getElementById(idRight);
           right.className += " drench";
-
-          square = (square.classList);
           right = (right.classList);
         }
       }
@@ -80,23 +74,21 @@ function checkDrench() {
       if (idBottom < 101) {
         bottom = (bottom.classList);
         if (JSON.stringify(square) === JSON.stringify(bottom)) {
-
-          square = document.getElementById(id);
-
           bottom = document.getElementById(idBottom);
           bottom.className += " drench";
-
-          square = (square.classList);
           bottom = (bottom.classList);
-
         }
       }
       square = document.getElementById(id);
       square.className += " drench";
-
     }
   }
 }
+
+
+
+
+
 
 
 //CHANGES FIRST COLOR on click 
@@ -164,7 +156,53 @@ function changeColor(newColor) {
   //   square.className += " drench";
   // }
 
+// function checkDrench() {
+//   var square_1 = document.getElementById(1);
+//   square_1.classList.add("drench");
 
+//   for (id = 1; id <= chessboardSize * chessboardSize; id++) {
+//     idRight = id + 1;
+//     idBottom = id + chessboardSize;
+
+//     square = document.getElementById(id);
+//     right = document.getElementById(idRight);
+//     bottom = document.getElementById(idBottom);
+
+//     square = (square.classList);
+//     right = (right.classList);
+//     bottom = (bottom.classList);
+
+//       //DRENCH RIGHT
+//       if (square.contains('drench') == true) {
+//         square.remove('drench');
+
+//       if (JSON.stringify(square) === JSON.stringify(right)) {
+//         square = document.getElementById(id);
+
+//         right = document.getElementById(idRight);
+//         right.className += " drench";
+
+//         square = (square.classList);
+//         right = (right.classList);
+//       }
+
+//       //DRENCH DOWN
+//       if (JSON.stringify(square) === JSON.stringify(bottom)) {
+
+//         square = document.getElementById(id);
+
+//         bottom = document.getElementById(idBottom);
+//         bottom.className += " drench";
+
+//         square = (square.classList);
+//         bottom = (bottom.classList);
+//       }
+
+//       square = document.getElementById(id);
+//       square.className += " drench";    
+//     }
+//   }
+// }
   //adds class drench to the next group of color DALSI NA RADE
   // id = 1;
   // idRight = id + 1;
