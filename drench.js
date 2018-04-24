@@ -15,10 +15,14 @@ for (j = 1; j <= chessboardSize; j++) {
 
 id = 1;
 var idRight = id + 1;
-var idBottom = id * chessboardSize + 1;
+var idBottom = id + chessboardSize;
+var idLeft = id - 1;
+var idUp = id - chessboardSize;
 var square = document.getElementById(id);
 var right = document.getElementById(idRight);
 var bottom = document.getElementById(idBottom);
+var left = document.getElementById(idLeft);
+var up = document.getElementById(idUp);
 
 checkDrench();
 
@@ -45,14 +49,18 @@ function checkDrench() {
   for (id = 1; id <= chessboardSize * chessboardSize; id++) {
     idRight = id + 1;
     idBottom = id + chessboardSize;
+    idLeft = id - 1;
+    idUp = id - chessboardSize;
 
     square = document.getElementById(id);
     right = document.getElementById(idRight);
     bottom = document.getElementById(idBottom);
+    left = document.getElementById(idLeft);
+    up = document.getElementById(idUp);
 
     square = (square.classList);
 
-    //DRENCH RIGHT
+    //DRENCHES RIGHT
     if (square.contains('drench') == true) {
       square.remove('drench');
       if (idRight < (chessboardSize * chessboardSize + 1)) {
@@ -63,13 +71,32 @@ function checkDrench() {
           right = (right.classList);
         }
       }
-      //DRENCH DOWN
+      //DRENCHES DOWN
       if (idBottom < (chessboardSize * chessboardSize + 1)) {
         bottom = (bottom.classList);
         if (JSON.stringify(square) === JSON.stringify(bottom)) {
           bottom = document.getElementById(idBottom);
           bottom.className += " drench";
           bottom = (bottom.classList);
+        }
+      }
+      //DRENCHES LEFT
+      if (idLeft > 0) {
+        left = (right.classList);
+        if (JSON.stringify(square) === JSON.stringify(left)) {
+          left = document.getElementById(idLeft);
+          left.className += " drench";
+          left = (left.classList);
+        }
+      }
+      //DRENCHES UP
+      if (idUp > 0) {
+        up = (up.classList);
+
+        if (JSON.stringify(square) === JSON.stringify(up)) {
+          up = document.getElementById(idUp);
+          up.className += " drench";
+          up = (up.classList);
         }
       }
       square = document.getElementById(id);
