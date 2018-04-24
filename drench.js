@@ -82,7 +82,7 @@ function checkDrench() {
       }
       //DRENCHES LEFT
       if (idLeft > 0) {
-        left = (right.classList);
+        left = (left.classList);
         if (JSON.stringify(square) === JSON.stringify(left)) {
           left = document.getElementById(idLeft);
           left.className += " drench";
