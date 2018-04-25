@@ -1,21 +1,23 @@
 body {
   background-color: lightgray;
   padding: 25px;
+}   
+
+.container {
+  display: flex;
+  justify-content: space-around;
 }
-
-/* NEED TO WORK ON THIS: */
-
-#main {
-  margin-right: auto;
-  margin-left: auto;
+.wrapper   {
+  display: flex;
+  flex-direction: column;
 }
 
 .row {
   margin: 0;
 }
 
-#button .square:hover {
-  border: solid darkslategrey 1px;
+#buttons .square:hover {
+  border: solid darkslategrey 2px;
 }
 
 .button {
