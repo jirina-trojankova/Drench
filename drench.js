@@ -123,5 +123,12 @@ function changeColor(newColor) {
   checkDrench();
 }
 
-//todo: add counter and you-have-finished notices
-//drench also upwards and to the left!
+var clicks = 30;
+function counter() {
+  clicks--;
+  document.getElementById('counter').innerHTML = '<br><br><p>You have ' + clicks + ' moves to dreanch the board</p>';
+  
+}
+
+
+
