@@ -123,12 +123,15 @@ function changeColor(newColor) {
   checkDrench();
 }
 
-var clicks = 30;
+var clicks = 25;
 function counter() {
   clicks--;
-  document.getElementById('counter').innerHTML = '<br><br><p>You have ' + clicks + ' moves to dreanch the board</p>';
-  
+  document.getElementById('counter').innerHTML = '<br><br><p>You have ' + clicks + ' moves to drench the board</p>';
+  if (clicks === 0) {
+    document.getElementById('counter').innerHTML = '<br><br><p>Game over! You have lost :( <br/><input class="button" type="button" value="Click here and try it again" onClick="window.location.reload()"></p>';
+    
+  }
 }
 
 
-
+//Add notice you have won after drenching all the board
