@@ -113,8 +113,8 @@ function changeColor(newColor) {
   for (id = 1; id <= chessboardSize * chessboardSize; id++) {
     square = document.getElementById(id);
 
-  //if there's class drench, gives it new color
-  if (square.classList.contains('drench') === true) {
+    //if there's class drench, gives it new color
+    if (square.classList.contains('drench') === true) {
       square = document.getElementById(id);
       square.classList.removeMany('color1 color2 color3 color4 color5 color6');
       square.classList.add(newColor);
@@ -123,15 +123,89 @@ function changeColor(newColor) {
   checkDrench();
 }
 
+//counter
 var clicks = 25;
+
 function counter() {
   clicks--;
   document.getElementById('counter').innerHTML = '<br><br><p>You have ' + clicks + ' moves to drench the board</p>';
   if (clicks === 0) {
     document.getElementById('counter').innerHTML = '<br><br><p>Game over! You have lost :( <br/><input class="button" type="button" value="Click here and try it again" onClick="window.location.reload()"></p>';
-    
   }
 }
+//   var last_square = document.getElementById(chessboardSize * chessboardSize);
+//   id = 0;
+//   counter:
+//   for (id = 1; id <= (chessboardSize * chessboardSize); id++) {
+//     square = document.getElementById(id);
+//     if (square.classList.contains('drench') !== true) {
+//       break;}
+//       if (last_square.classList.contains('drench') === true) {
+//         document.getElementById('counter').innerHTML = '<br><br><p>You have won! :) <br/><input class="button" type="button" value="Click here to play again" onClick="window.location.reload()"></p>';
+   
+//     }  
+//   }    
+// }
 
 
-//Add notice you have won after drenching all the board
+
+// if ((square.classList.contains('drench') !== true) && (last_square.classList.contains('drench') === true)){
+//   document.getElementById('counter').innerHTML = '<br><br><p>You have won! :) <br/><input class="button" type="button" value="Click here to play again" onClick="window.location.reload()"></p>';    
+// } 
+
+//   while (i < 10) {
+//     text += "The number is " + i;
+//     i++;
+// }
+
+// id = 1;
+// square = document.getElementById(id);
+// console.log(square);
+
+// while (square.classList.contains('drench') === true) {
+//   console.log(square);
+//   id++;
+//   console.log(square);
+//   if (id === (chessboardSize * chessboardSize)) {
+//     document.getElementById('counter').innerHTML = '<br><br><p>You have won! :) <br/><input class="button" type="button" value="Click here to play again" onClick="window.location.reload()"></p>';
+//   }
+// }
+
+
+
+//   square = document.getElementById(id);
+//   while (square.classList.contains('drench') !== true) {
+//     break;
+//     var last_square = document.getElementById(chessboardSize * chessboardSize)
+//     if (last_square.classList.contains('drench') === true) {
+//       document.getElementById('counter').innerHTML = '<br><br><p>You have won! :) <br/><input class="button" type="button" value="Click here to play again" onClick="window.location.reload()"></p>';
+//     }
+//   }
+// }
+
+
+
+
+// }
+//     if (i === 3) { break; }
+//     text += "The number is " + i + "<br>";
+// } 
+// id = 0;
+//   for (i = 1; i <= (chessboardSize * chessboardSize); i++) {
+//     id++;
+//     square = document.getElementById(id);
+//     if (square.classList.contains('drench') !== true) { break;}
+//    }   
+//    document.getElementById('counter').innerHTML = '<br><br><p>You have won! :) <br/><input class="button" type="button" value="Click here to play again" onClick="window.location.reload()"></p>';
+
+
+
+
+//Add notice that you have won after drenching all the board
+
+
+// var last_square = document.getElementById(chessboardSize * chessboardSize);
+// console.log(last_square);
+// if (square.classList.contains('drench') === true) {
+//   document.getElementById('counter').innerHTML = '<br><br><p>You have won! :) <br/><input class="button" type="button" value="Click here to play again" onClick="window.location.reload()"></p>';
+// }
