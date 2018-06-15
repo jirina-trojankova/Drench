@@ -1,6 +1,6 @@
 var rowOpen = '<div class="row">';
 var rowClose = '</div>';
-var chessboardSize = 10;
+var chessboardSize = 3;
 var id = 0;
 
 //this creates grid
@@ -33,7 +33,7 @@ function getNumber() {
 }
 
 
-//removes many classes
+//removes many classes - taken from stackoverflow
 DOMTokenList.prototype.removeMany = function (classes) {
   var array = classes.split(' ');
   for (var i = 0, length = array.length; i < length; i++) {
@@ -41,7 +41,7 @@ DOMTokenList.prototype.removeMany = function (classes) {
   }
 }
 
-//checks every square and drenches right and down
+//checks every square and drenches right, down, left, up
 function checkDrench() {
   var square_1 = document.getElementById(1);
   square_1.classList.add("drench");
@@ -133,19 +133,62 @@ function counter() {
     document.getElementById('counter').innerHTML = '<br><br><p>Game over! You have lost :( <br/><input class="button" type="button" value="Click here and try it again" onClick="window.location.reload()"></p>';
   }
 }
-//   var last_square = document.getElementById(chessboardSize * chessboardSize);
-//   id = 0;
-//   counter:
-//   for (id = 1; id <= (chessboardSize * chessboardSize); id++) {
-//     square = document.getElementById(id);
-//     if (square.classList.contains('drench') !== true) {
-//       break;}
-//       if (last_square.classList.contains('drench') === true) {
-//         document.getElementById('counter').innerHTML = '<br><br><p>You have won! :) <br/><input class="button" type="button" value="Click here to play again" onClick="window.location.reload()"></p>';
-   
-//     }  
-//   }    
+
+function winner() {
+  //counter:
+  var arr = [];
+  for (id = 1; id <= (chessboardSize * chessboardSize); id++) {
+    square = document.getElementById(id);
+    if(square.classList.contains('drench')){
+    arr.push(id);
+    }
+  }
+  var length = arr.length;
+  if(arr.length === (chessboardSize * chessboardSize)){
+    document.getElementById('counter').innerHTML = '<br><br><p>You have won! :) <br/><input class="button" type="button" value="Click here to play again" onClick="window.location.reload()"></p>';
+  }
+}
+
+
+
+    // square = document.getElementById(id);
+    // console.log(square);
+// if every id contains drench
+
+// if(square.classList.contains('drench')!==true) {
+//   var win = false;
+// } else {
+//   win = true;
 // }
+// if (win === true) {
+//   document.getElementById('counter').innerHTML = '<br><br><p>You have won! :) <br/><input class="button" type="button" value="Click here to play again" onClick="window.location.reload()"></p>';
+// }
+
+
+// var yearStart = 2000;
+// var yearEnd = 2040;
+
+// var arr = [];
+
+// for (var i = yearStart; i <= yearEnd; i++) {
+
+//      arr.push(i);
+// }
+// You won
+
+  
+    // if (square.classList.contains('drench') !== true) {
+    //   break;
+    //     document.getElementById('counter').innerHTML = '<br><br><p>You have won! :) <br/><input class="button" type="button" value="Click here to play again" onClick="window.location.reload()"></p>';
+      
+    // }
+    
+     
+    
+    
+//   }  
+// }  
+
 
 
 
