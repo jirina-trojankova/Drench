@@ -16,7 +16,9 @@
   <h2>Welcome to my
     <strong>Drench</strong>
   </h2>
-  <p>I have made this game in 2018 using simple javascript HTML and CSS. Hope you enjoy playing as much as I enjoyed writting.</p>
+  <p>I have made this game in 2018 using simple javascript HTML and CSS. Hope you enjoy playing as much as I enjoyed writting.
+    Beware, this is a beta version, there might be some bugs... Please test it!
+  </p>
   <p>How to play it: try to make all the board one color by clicking on the squares at right.
   </p>
   <br>
@@ -33,6 +35,27 @@
         <input class="button" type="button" value="Reset" onClick="window.location.reload()">
       </div>
     </div>
+
+    <div class="wrapper">
+      <div id="buttons" class="row">
+        <div class="wrapper">
+          <div class="square color1" onclick="changeColor('color1'); counter(); winner();"></div>
+          <div class="square color2" onclick="changeColor('color2'); counter(); winner();"></div>
+          <div class="square color3" onclick="changeColor('color3'); counter(); winner();"></div>
+        </div>
+        <div class="wrapper">
+          <div class="square color4" onclick="changeColor('color4'); counter(); winner();"></div>
+          <div class="square color5" onclick="changeColor('color5'); counter(); winner();"></div>
+          <div class="square color6" onclick="changeColor('color6'); counter(); winner();"></div>
+        </div>
+      </div>
+
+      <div id="counter"><br><br><p>You have 25 moves to drench the board</p></div>
+
+    </div>
+    <br>
+    <br>
+
   </div>
 
 </body>

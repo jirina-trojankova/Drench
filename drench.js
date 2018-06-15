@@ -1,5 +1,5 @@
 var rowOpen = '<div class="row">';
-var rowClose = '</div>';
+var rowClose = '</div>'
 var chessboardSize = 10;
 var id = 0;
 
@@ -33,7 +33,7 @@ function getNumber() {
 }
 
 
-//removes many classes
+//removes many classes - taken from stackoverflow
 DOMTokenList.prototype.removeMany = function (classes) {
   var array = classes.split(' ');
   for (var i = 0, length = array.length; i < length; i++) {
@@ -41,7 +41,7 @@ DOMTokenList.prototype.removeMany = function (classes) {
   }
 }
 
-//checks every square and drenches right and down
+//checks every square and drenches right, down, left, up
 function checkDrench() {
   var square_1 = document.getElementById(1);
   square_1.classList.add("drench");
@@ -113,8 +113,8 @@ function changeColor(newColor) {
   for (id = 1; id <= chessboardSize * chessboardSize; id++) {
     square = document.getElementById(id);
 
-  //if there's class drench, gives it new color
-  if (square.classList.contains('drench') === true) {
+    //if there's class drench, gives it new color
+    if (square.classList.contains('drench') === true) {
       square = document.getElementById(id);
       square.classList.removeMany('color1 color2 color3 color4 color5 color6');
       square.classList.add(newColor);
@@ -123,15 +123,27 @@ function changeColor(newColor) {
   checkDrench();
 }
 
+//counter
 var clicks = 25;
+
 function counter() {
   clicks--;
   document.getElementById('counter').innerHTML = '<br><br><p>You have ' + clicks + ' moves to drench the board</p>';
   if (clicks === 0) {
     document.getElementById('counter').innerHTML = '<br><br><p>Game over! You have lost :( <br/><input class="button" type="button" value="Click here and try it again" onClick="window.location.reload()"></p>';
-    
   }
 }
 
-
-//Add notice you have won after drenching all the board
+function winner() {
+  var arr = [];
+  for (id = 1; id <= (chessboardSize * chessboardSize); id++) {
+    square = document.getElementById(id);
+    if(square.classList.contains('drench')){
+    arr.push(id);
+    }
+  }
+  var length = arr.length;
+  if(arr.length === (chessboardSize * chessboardSize)){
+    document.getElementById('counter').innerHTML = '<br><br><p>You have won! :) <br/><input class="button" type="button" value="Click here to play again" onClick="window.location.reload()"></p>';
+  }
+}
