@@ -1,6 +1,6 @@
 var rowOpen = '<div class="row">';
-var rowClose = '</div>';
-var chessboardSize = 3;
+var rowClose = '</div>'
+var chessboardSize = 10;
 var id = 0;
 
 //this creates grid
@@ -135,7 +135,6 @@ function counter() {
 }
 
 function winner() {
-  //counter:
   var arr = [];
   for (id = 1; id <= (chessboardSize * chessboardSize); id++) {
     square = document.getElementById(id);
@@ -148,107 +147,3 @@ function winner() {
     document.getElementById('counter').innerHTML = '<br><br><p>You have won! :) <br/><input class="button" type="button" value="Click here to play again" onClick="window.location.reload()"></p>';
   }
 }
-
-
-
-    // square = document.getElementById(id);
-    // console.log(square);
-// if every id contains drench
-
-// if(square.classList.contains('drench')!==true) {
-//   var win = false;
-// } else {
-//   win = true;
-// }
-// if (win === true) {
-//   document.getElementById('counter').innerHTML = '<br><br><p>You have won! :) <br/><input class="button" type="button" value="Click here to play again" onClick="window.location.reload()"></p>';
-// }
-
-
-// var yearStart = 2000;
-// var yearEnd = 2040;
-
-// var arr = [];
-
-// for (var i = yearStart; i <= yearEnd; i++) {
-
-//      arr.push(i);
-// }
-// You won
-
-  
-    // if (square.classList.contains('drench') !== true) {
-    //   break;
-    //     document.getElementById('counter').innerHTML = '<br><br><p>You have won! :) <br/><input class="button" type="button" value="Click here to play again" onClick="window.location.reload()"></p>';
-      
-    // }
-    
-     
-    
-    
-//   }  
-// }  
-
-
-
-
-// if ((square.classList.contains('drench') !== true) && (last_square.classList.contains('drench') === true)){
-//   document.getElementById('counter').innerHTML = '<br><br><p>You have won! :) <br/><input class="button" type="button" value="Click here to play again" onClick="window.location.reload()"></p>';    
-// } 
-
-//   while (i < 10) {
-//     text += "The number is " + i;
-//     i++;
-// }
-
-// id = 1;
-// square = document.getElementById(id);
-// console.log(square);
-
-// while (square.classList.contains('drench') === true) {
-//   console.log(square);
-//   id++;
-//   console.log(square);
-//   if (id === (chessboardSize * chessboardSize)) {
-//     document.getElementById('counter').innerHTML = '<br><br><p>You have won! :) <br/><input class="button" type="button" value="Click here to play again" onClick="window.location.reload()"></p>';
-//   }
-// }
-
-
-
-//   square = document.getElementById(id);
-//   while (square.classList.contains('drench') !== true) {
-//     break;
-//     var last_square = document.getElementById(chessboardSize * chessboardSize)
-//     if (last_square.classList.contains('drench') === true) {
-//       document.getElementById('counter').innerHTML = '<br><br><p>You have won! :) <br/><input class="button" type="button" value="Click here to play again" onClick="window.location.reload()"></p>';
-//     }
-//   }
-// }
-
-
-
-
-// }
-//     if (i === 3) { break; }
-//     text += "The number is " + i + "<br>";
-// } 
-// id = 0;
-//   for (i = 1; i <= (chessboardSize * chessboardSize); i++) {
-//     id++;
-//     square = document.getElementById(id);
-//     if (square.classList.contains('drench') !== true) { break;}
-//    }   
-//    document.getElementById('counter').innerHTML = '<br><br><p>You have won! :) <br/><input class="button" type="button" value="Click here to play again" onClick="window.location.reload()"></p>';
-
-
-
-
-//Add notice that you have won after drenching all the board
-
-
-// var last_square = document.getElementById(chessboardSize * chessboardSize);
-// console.log(last_square);
-// if (square.classList.contains('drench') === true) {
-//   document.getElementById('counter').innerHTML = '<br><br><p>You have won! :) <br/><input class="button" type="button" value="Click here to play again" onClick="window.location.reload()"></p>';
-// }
