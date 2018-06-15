@@ -51,18 +51,18 @@ function checkDrench() {
     idBottom = id + chessboardSize;
     idLeft = id - 1;
     idUp = id - chessboardSize;
-
     square = document.getElementById(id);
     right = document.getElementById(idRight);
     bottom = document.getElementById(idBottom);
     left = document.getElementById(idLeft);
     up = document.getElementById(idUp);
-
     square = (square.classList);
 
-    //DRENCHES RIGHT
+//DRENCHES 
     if (square.contains('drench') == true) {
       square.remove('drench');
+
+//RIGHT
       if (idRight < (chessboardSize * chessboardSize + 1)) {
         right = (right.classList);
         if (JSON.stringify(square) === JSON.stringify(right)) {
@@ -71,7 +71,7 @@ function checkDrench() {
           right = (right.classList);
         }
       }
-      //DRENCHES DOWN
+// DOWN
       if (idBottom < (chessboardSize * chessboardSize + 1)) {
         bottom = (bottom.classList);
         if (JSON.stringify(square) === JSON.stringify(bottom)) {
@@ -80,8 +80,16 @@ function checkDrench() {
           bottom = (bottom.classList);
         }
       }
-      //DRENCHES LEFT
-      if (idLeft > 0) {
+//LEFT
+// var  arr= [];
+// var n = null;
+// for (i = 0; i < chessboardSize; i++) {
+// n = (i*chessboardSize)+1;
+// arr.push(n);
+
+      if ((idLeft > 0) && ((square == 1 ) && (square == 11) && (square == 21) && (square == 31) && (square == 41) 
+      && (square == 51) && (square == 61) && (square == 71) && (square == 81) && (square == 91))) {
+        left = document.getElementById(idLeft);
         left = (left.classList);
         if (JSON.stringify(square) === JSON.stringify(left)) {
           left = document.getElementById(idLeft);
@@ -89,21 +97,26 @@ function checkDrench() {
           left = (left.classList);
         }
       }
-      //DRENCHES UP
+
+      
+//UP
       if (idUp > 0) {
         up = (up.classList);
-
         if (JSON.stringify(square) === JSON.stringify(up)) {
           up = document.getElementById(idUp);
           up.className += " drench";
           up = (up.classList);
         }
       }
+
+
       square = document.getElementById(id);
       square.className += " drench";
     }
   }
 }
+
+
 
 
 //CHANGES FIRST COLOR on click and adds class drench
@@ -135,15 +148,15 @@ function counter() {
 }
 
 function winner() {
-  var arr = [];
+  var ids = [];
   for (id = 1; id <= (chessboardSize * chessboardSize); id++) {
     square = document.getElementById(id);
     if(square.classList.contains('drench')){
-    arr.push(id);
+    ids.push(id);
     }
   }
-  var length = arr.length;
-  if(arr.length === (chessboardSize * chessboardSize)){
+  var length = ids.length;
+  if(ids.length === (chessboardSize * chessboardSize)){
     document.getElementById('counter').innerHTML = '<br><br><p>You have won! :) <br/><input class="button" type="button" value="Click here to play again" onClick="window.location.reload()"></p>';
   }
 }
